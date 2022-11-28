@@ -1,0 +1,111 @@
+﻿@{
+    ViewData["Title"] = "Alunos";
+}
+
+@if (TempData["MensagemSucesso"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["MensagemSucesso"]
+    </div>
+}
+
+@if (TempData["SucessoEdicao"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SucessoEdicao"]
+    </div>
+}
+
+@if (TempData["SucessoExclusao"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SucessoExclusao"]
+    </div>
+}
+
+@if (TempData["MensagemErro"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["MensagemErro"]
+    </div>
+}
+
+@if (TempData["ErroAlunos"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErroAlunos"]
+    </div>
+}
+
+@if (TempData["ErroEdicao"] != null)
+{
+<div class="alert alert-danger">
+    @TempData["ErroEdicao"]
+</div>
+}
+
+@if (TempData["ErroExclusao"] != null)
+{
+<div class="alert alert-danger">
+    @TempData["ErroExclusao"]
+</div>
+}
+
+@if (TempData["ErroBuscaEndereco"] != null)
+{
+<div class="alert alert-danger">
+    @TempData["ErroBuscaEndereco"]
+</div>
+}
+
+@model List<AlunoModel>
+
+<div class="text-left">
+    <div>
+        <h1>Dados dos Alunos</h1>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Idade</th>
+                <th scope="col">Contato</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">CEP</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @if (Model != null && Model.Any())
+            {
+                foreach (AlunoModel aluno in Model)
+                {
+                    <tr>
+                        <td>@aluno.Nome</td>
+                        <td>@aluno.Idade</td>
+                        <td>@aluno.Contato</td>
+                        <td>@aluno.Email</td>
+                        <td>@aluno.Cep</td>
+                        <td>
+                            <a type="submit" class="btn btn-primary" role="button" asp-controller="Alunos" asp-action="BuscarEndereco" asp-route-cep="@aluno.Cep">Endereço</a>
+                        </td>
+                        <td>
+                            <a type="submit" class="btn btn-primary" role="button" asp-controller="Alunos" asp-action="EditarAluno" asp-route-id="@aluno.Id">Editar</a>
+                        </td>
+                        <td>
+                            <a type="submit" class="btn btn-primary" role="button" asp-controller="Alunos" asp-action="ExcluirAluno" asp-route-id="@aluno.Id">Excluir</a>
+                        </td>
+                    </tr>
+                }
+            }
+
+        </tbody>
+    </table>
+    <div class="d-md-flex justify-content-md-center">
+        <a type="button" class="btn btn-primary" asp-controller="Alunos" asp-action="AdicionarAluno">Adicionar novo aluno</a>
+    </div>
+</div>

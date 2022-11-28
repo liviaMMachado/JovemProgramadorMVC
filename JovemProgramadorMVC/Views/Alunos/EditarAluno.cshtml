@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Editar aluno";
+}
+
+@model AlunoModel
+
+<form asp-controller="Alunos" asp-action="AlterarAluno" method="post">
+    <input type="hidden" asp-for="Id"/>
+
+    <div class="text-left">
+        <div>
+            <h1>Editar Aluno</h1>
+        </div>
+
+        <div class="mb-3">
+            <div>
+                <label for="exampleFormControlInput1" class="form-label">Nome</label>
+                <input type="text" asp-for="Nome" class="form-control" id="exampleFormControlInput1" placeholder="Your name"><br>
+            </div>
+            <div>
+                <label for="exampleFormControlInput1" class="form-label">Idade</label>
+                <input type="text" asp-for="Idade" class="form-control" id="exampleFormControlInput1" placeholder="00"><br>
+            </div>
+            <div>
+                <label for="exampleFormControlInput1" class="form-label">Contato</label>
+                <input type="text" asp-for="Contato" class="form-control" id="exampleFormControlInput1" placeholder="(00) 00000-0000"><br>
+            </div>
+            <div>
+                <label for="exampleFormControlInput1" class="form-label">E-mail</label>
+                <input type="email" asp-for="Email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"><br>
+            </div>
+            <div>
+                <label for="exampleFormControlInput1" class="form-label">CEP</label>
+                <input type="text" asp-for="Cep" class="form-control" id="exampleFormControlInput1" placeholder="00000-000">
+            </div>
+        </div>
+
+        <div class="d-grid gap-2 d-md-block text-center">
+            <button class="btn btn-primary" type="submit">Alterar</button>
+            <a class="btn btn-primary" type="button" asp-controller="Alunos" asp-action="Index">Voltar</a>
+        </div>
+    </div>
+</form>
